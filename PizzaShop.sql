@@ -1,3 +1,26 @@
+CREATE TABLE city
+(
+    city_id iSERIAL PRIMARY KEY,
+    city_name VARCHAR(50) NOT NULL,
+    state_id INTEGER NOT NULL,
+    created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP,
+    created_by INTEGER NOT NULL,
+    modified_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP,
+    modified_by INTEGER
+)
+
+CREATE TABLE countries
+(
+    country_id PRIMARY KEY,
+    short_name VARCHAR(3) NOT NULL,
+    country_name VARCHAR(150) NOT NULL,
+    phone_code INTEGER NOT NULL,
+    created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP,
+    created_by INTEGER NOT NULL,
+    modified_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP,
+    modified_by INTEGER
+)
+
 CREATE TABLE modifier_group_modifier_mapping
 (
     modifier_group_modifier_mapping_id SERIAL PRIMARY KEY,
@@ -20,29 +43,6 @@ CREATE TABLE categories
     category_name VARCHAR(30) UNIQUE NOT NULL,
     description TEXT,
     is_deleted boolean DEFAULT FALSE,
-    created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP,
-    created_by INTEGER NOT NULL,
-    modified_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP,
-    modified_by INTEGER
-)
-
-CREATE TABLE city
-(
-    city_id iSERIAL PRIMARY KEY,
-    city_name VARCHAR(50) NOT NULL,
-    state_id INTEGER NOT NULL,
-    created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP,
-    created_by INTEGER NOT NULL,
-    modified_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP,
-    modified_by INTEGER
-)
-
-CREATE TABLE countries
-(
-    country_id PRIMARY KEY,
-    short_name VARCHAR(3) NOT NULL,
-    country_name VARCHAR(150) NOT NULL,
-    phone_code INTEGER NOT NULL,
     created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP,
     created_by INTEGER NOT NULL,
     modified_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP,

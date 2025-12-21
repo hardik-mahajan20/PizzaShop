@@ -1,0 +1,6 @@
+@model PizzaShop.Web.ViewModels.LoginRequestViewModel
+<form method="post" asp-action="Login" asp-controller="Auth">
+    <input asp-for="Email" type="email" placeholder="Email*">
+    <input type="password" asp-for="Password" placeholder="Password*">
+    <button type="submit">Login</button>
+</form>

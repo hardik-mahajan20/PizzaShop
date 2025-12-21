@@ -1,3 +1,10 @@
+using Microsoft.EntityFrameworkCore;
+using PizzaShop.Repository.Implementations;
+using PizzaShop.Repository.Interfaces;
+using PizzaShop.Repository.Models;
+using PizzaShop.Service.Implementations;
+using PizzaShop.Service.Interfaces;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -5,6 +12,10 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<PizzaShopContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<IUsersLoginRepository, UsersLoginRepository>();
+
 
 
 var app = builder.Build();
@@ -26,7 +37,7 @@ app.MapStaticAssets();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}")
+    pattern: "{controller=Auth}/{action=Login}/{id?}")
     .WithStaticAssets();
 
 
